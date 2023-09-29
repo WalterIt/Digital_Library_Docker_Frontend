@@ -8,6 +8,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import ReactStars from "react-rating-stars-component";
+import { API_URL } from "../App";
 
 export default function LibraryBook({ book, fetchData }) {
   const bookMovedToast = useToast();
@@ -16,7 +17,7 @@ export default function LibraryBook({ book, fetchData }) {
       volume_id: book.volume_id,
       new_state: newSection,
     });
-    fetch("http://127.0.0.1:8000/books/update_state", {
+    fetch(`${API_URL}/books/update_state`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -43,7 +44,7 @@ export default function LibraryBook({ book, fetchData }) {
       volume_id: book.volume_id,
       new_rating: new_rating,
     });
-    fetch("http://127.0.0.1:8000/books/update_rating", {
+    fetch(`${API_URL}/books/update_rating`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -60,7 +61,7 @@ export default function LibraryBook({ book, fetchData }) {
           duration: 3000,
           isClosable: true,
         });
-        console.log("Going to fetch data again!");
+        // console.log("Going to fetch data again!");
         fetchData();
       });
   };

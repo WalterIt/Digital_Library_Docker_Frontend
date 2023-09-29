@@ -14,8 +14,11 @@ import {
 import { AddIcon } from "@chakra-ui/icons";
 
 import { useState } from "react";
+import { API_URL } from "../App";
 
-const API_KEY = "AIzaSyAh_wYYhUBzBz8DJaNAgL-ejFeaLPJueqY";
+
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
 
 export default function Discover({ refreshData }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,7 +44,7 @@ export default function Discover({ refreshData }) {
       thumbnail: book.volumeInfo.imageLinks?.thumbnail,
       state: 2,
     });
-    fetch("http://127.0.0.1:8000/books", {
+    fetch(`${API_URL}/books`, {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -5,7 +5,6 @@ import LibraryBook from "./LibraryBook";
 export default function Library({ allBooks, refreshData }) {
   return (
     <VStack spacing={7}>
-      {" "}
       <Text>
         This is your digital library! Add new books here, browse them and even
         review them!
@@ -21,7 +20,7 @@ export default function Library({ allBooks, refreshData }) {
             }
           })}
       </SimpleGrid>
-      <Heading size="md">Unfinished</Heading>
+      <Heading size="md">Reading</Heading>
       <SimpleGrid columns={6} spacing={8}>
         {allBooks.length !== 0 &&
           allBooks.map((book) => {

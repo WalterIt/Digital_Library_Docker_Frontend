@@ -14,12 +14,16 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Discover from "./components/Discover";
 import Library from "./components/Library";
 
+export const API_URL = process.env.REACT_APP_API_URL;
+
+
 function App() {
   const [allBooks, setAllBooks] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
 
+
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/books`)
+    fetch(`${API_URL}/books`)
       .then((response) => response.json())
       .then((data) => {
         setAllBooks(data);
